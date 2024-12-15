@@ -1,0 +1,47 @@
+<div class="col">
+    <div class="row m-3">
+      <div class="col-md-8 p-0">
+        <h1>Liste des fournisseurs</h1>
+      </div>
+      <div class="col-md-4 text-right">
+        <app-boutton-action
+          (clickEvent)="nouveauFournisseur()"
+        ></app-boutton-action>
+      </div>
+    </div>
+  
+    <div class="col m-3">
+      <!-- Affichage du message d'erreur -->
+      <div class="alert alert-danger" *ngIf="errorMsg" role="alert">
+        {{ errorMsg }}
+      </div>
+  
+      <!-- Indicateur de chargement -->
+      <div class="text-center" *ngIf="loading">
+        <p>Chargement...</p>
+      </div>
+  
+      <!-- Liste des fournisseurs -->
+      <ng-container *ngIf="!loading && listFournisseur.length">
+        <app-detail-clt-frs
+          *ngFor="let fournisseur of listFournisseur; trackBy: trackById"
+          [Fournisseur]="fournisseur"
+          [origin]="'fournisseur'"
+          (suppressionResult)="handleSuppression($event)"
+        ></app-detail-clt-frs>
+      </ng-container>
+  
+      <!-- Message si aucun fournisseur n'est disponible -->
+      <div class="alert alert-info" *ngIf="!loading && !listFournisseur.length">
+        Aucun fournisseur disponible.
+      </div>
+    </div>
+  
+    <!-- Pagination -->
+    <div class="row mb-3" *ngIf="listFournisseur.length">
+      <div class="col-md-12 text-center">
+        <app-pagination></app-pagination>
+      </div>
+    </div>
+  </div>
+  

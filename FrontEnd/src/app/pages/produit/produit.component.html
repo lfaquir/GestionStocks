@@ -1,0 +1,51 @@
+<div class="container">
+    <h2 class="my-3">Gestion des Produits</h2>
+  
+    <!-- Bouton pour ajouter un nouveau produit -->
+    <div class="text-right mb-3">
+      <button class="btn btn-success" (click)="ajouterProduit()">Ajouter un produit</button>
+    </div>
+  
+    <!-- Message de chargement -->
+    <div *ngIf="isLoading" class="alert alert-info">
+      Chargement des produits...
+    </div>
+  
+    <!-- Message d'erreur -->
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+  
+    <!-- Table des produits -->
+    <table *ngIf="!isLoading && produits.length > 0" class="table table-bordered">
+      <thead class="thead-light">
+        <tr>
+          <th>Description</th>
+          <th>Prix Unitaire HT</th>
+          <th>Prix Unitaire TTC</th>
+          <th>Stock Actuel</th>
+          <th>Seuil de Réapprovisionnement</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let produit of produits">
+          <td>{{ produit.description || 'Non défini' }}</td>
+          <td>{{ produit.prixUnitaireHt || 'N/A' }} €</td>
+          <td>{{ produit.prixUnitaireTtc || 'N/A' }} €</td>
+          <td>{{ produit.stockActuel }}</td>
+          <td>{{ produit.seuilReapprovisionnement || 'Non défini' }}</td>
+          <td>
+            <button class="btn btn-primary btn-sm" (click)="modifierProduit(produit.Id)">Modifier</button>
+            <button class="btn btn-danger btn-sm" (click)="supprimerProduit(produit.Id)">Supprimer</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- Message si aucun produit -->
+    <div *ngIf="!isLoading && produits.length === 0" class="alert alert-warning">
+      Aucun produit trouvé.
+    </div>
+  </div>
+  

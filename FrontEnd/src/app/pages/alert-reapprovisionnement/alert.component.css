@@ -1,0 +1,37 @@
+.alert-container {
+    background-color: #f8d7da;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    border: 1px solid #f5c6cb;
+  }
+  
+  .alert-container h2 {
+    font-size: 1.5em;
+  }
+  
+  .alert-container ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .alert-container li {
+    font-size: 1.1em;
+  }
+  
+  .error-message {
+    color: red;
+    font-weight: bold;
+    padding: 20px;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    margin-top: 20px;
+  }
+  
+  .loading {
+    font-size: 1.2em;
+    color: blue;
+    font-weight: bold;
+  }
+  
